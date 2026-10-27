@@ -1,0 +1,400 @@
+/* styles.css — FFXIV Daily & Weekly Planner
+   Accessible, warm, polished. Local-first, no game assets. */
+
+:root {
+  --bg: #f7f5f0;
+  --surface: #ffffff;
+  --text: #2b2a29;
+  --muted: #6b6761;
+  --accent: #8a6d3b;
+  --accent-hover: #735a2f;
+  --accent-soft: #f3e9d2;
+  --border: #d9d4ca;
+  --done: #2e7d5b;
+  --done-bg: #e8f2ec;
+  --danger: #a33a3a;
+  --danger-soft: #fbeaea;
+  --focus: #2563eb;
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: auto;
+  height: auto;
+  padding: 8px 14px;
+  background: var(--focus);
+  color: #fff;
+  z-index: 1000;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.site-header {
+  padding: 28px 20px 10px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.site-header h1 {
+  margin: 0 0 6px;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.countdowns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.countdowns > div {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+section {
+  margin-bottom: 34px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+}
+
+h2 {
+  margin: 0 0 14px;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+p {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+/* ---------- Checklists ---------- */
+
+.checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.item-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.item-text {
+  flex: 1;
+}
+
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--done);
+  cursor: pointer;
+}
+
+.item-text.done {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.item-label:has(input:checked) .item-text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.delete {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+
+.delete:hover {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.delete:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.empty {
+  color: var(--muted);
+  font-style: italic;
+  padding: 8px 0;
+}
+
+/* ---------- Add item forms ---------- */
+
+.item-add-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.item-add-form input[type='text'] {
+  flex: 1;
+  min-width: 140px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+}
+
+.item-add-form .button {
+  padding: 8px 14px;
+}
+
+/* ---------- Leves ---------- */
+
+.leves-line {
+  font-size: 1.1rem;
+  margin: 0 0 12px;
+}
+
+.leves-line strong {
+  color: var(--done);
+}
+
+.leves-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.leves-controls button {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.leves-controls button:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.leves-controls button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.progress {
+  width: 100%;
+  height: 10px;
+  background: #e7e2d8;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--done);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar {
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Settings ---------- */
+
+.field {
+  margin-bottom: 12px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  max-width: 260px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.hint {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-hover);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.button-small {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+#reset-data {
+  margin-top: 10px;
+  background: var(--danger-soft);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+#reset-data:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  max-width: 720px;
+  margin: 30px auto 20px;
+  padding: 0 20px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 20px 16px 8px;
+  }
+  main {
+    padding: 0 16px 32px;
+  }
+  section {
+    padding: 14px 16px;
+  }
+}

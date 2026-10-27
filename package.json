@@ -1,0 +1,14 @@
+{
+  "name": "ffxiv-leve-and-roulette-planner",
+  "version": "1.0.0",
+  "description": "Static web app for FFXIV players to plan daily roulettes, leve allowances, and weekly goals. Checklists reset on configurable game reset times. localStorage, accessible UI, tested reset-time logic.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node test-reset.js",
+    "start": "echo 'Open index.html in your browser, or serve this folder with any static server (e.g. python3 -m http.server).'"
+  },
+  "keywords": ["ffxiv", "planner", "checklist", "localstorage", "accessibility"],
+  "author": "Asdale Dynamics, LLC",
+  "license": "MIT"
+}
